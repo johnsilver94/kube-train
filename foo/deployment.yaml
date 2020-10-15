@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
         - name: kube-foo-app
-          image: foo_app:v1
+          image: silverfang94/app_foo:v1
+          imagePullPolicy: IfNotPresent
           resources:
             limits:
               memory: "128Mi"

@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
         - name: kube-bar-app
-          image: bar_app:v1
+          image: silverfang94/app_bar:v1
+          imagePullPolicy: IfNotPresent
           resources:
             limits:
               memory: "128Mi"

@@ -1,0 +1,15 @@
+kubeTrainGroup
+acrKubeTrain
+acrkubetrain.azurecr.io
+
+docker tag silverfang94/app_bar:v1 acrkubetrain.azurecr.io/app_bar:v1
+docker tag silverfang94/app_foo:v1 acrkubetrain.azurecr.io/app_foo:v1
+
+docker push acrkubetrain.azurecr.io/app_foo:v1
+docker push acrkubetrain.azurecr.io/app_bar:v1
+
+az acr repository list --name acrKubeTrain --output table
+
+az aks create --resource-group kubeTrainGroup --name kubeTrainCluster --node-count 1 --generate-ssh-keys --attach-acr acrKubeTrain
+
+az aks get-credentials --resource-group kubeTrainGroup --name kubeTrainCluster
